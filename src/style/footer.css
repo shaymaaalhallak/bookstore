@@ -1,0 +1,110 @@
+/* MAIN FOOTER STYLE */
+.custom-footer {
+  background: #071015;
+  padding: 80px 40px 40px 40px;
+  color: white;
+  font-family: "Georgia", serif;
+}
+
+/* MAIN LAYOUT */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* LEFT */
+.footer-left {
+  max-width: 450px;
+}
+
+.footer-title {
+  font-size: 55px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #c8c8c8;
+}
+
+.footer-text {
+  color: #c8c8c8;
+  margin-bottom: 6px;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.icon-box {
+  background: #eed9b5;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: #000;
+  font-size: 20px;
+}
+
+/* RIGHT */
+.footer-right {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* CARD EFFECT */
+.contact-card-wrapper {
+  position: relative;
+}
+
+.shadow-card {
+  position: absolute;
+  width: 220px;
+  height: 200px;
+  background: #000;
+  opacity: 0.25;
+  border-radius: 15px;
+  bottom: -12px;
+  right: -12px;
+}
+
+.contact-card {
+  background: #0c1a1f;
+  width: 220px;
+  height: 200px;
+  border-radius: 15px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon {
+  color: #eed9b5;
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.contact-text {
+  font-size: 17px;
+  text-align: center;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  text-align: center;
+  margin-top: 45px;
+  color: #9aa0a6;
+  font-size: 14px;
+}
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #c8c8c8;
+}

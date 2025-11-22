@@ -1,0 +1,61 @@
+.features-container {
+  background-color: #ffffff;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.features-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.features-intro {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #555555;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.features-services h2,
+.features-contact h2 {
+  color: #333333;
+  font-weight: 600;
+}
+
+.services-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.services-list li {
+  padding: 0.5rem 0;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #444444;
+}
+
+.btn-primary {
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #ff4b4b;
+}
+
+.features-contact p {
+  font-size: 1rem;
+  color: #555555;
+  margin: 0.3rem 0;
+}
