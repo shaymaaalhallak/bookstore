@@ -1,0 +1,111 @@
+/* Container setup for the entire About page */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Two-column layout for About content and features */
+.about-wrapper {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-top: 3rem;
+}
+
+/* Left column: About Us section */
+.about-left {
+  flex: 1;
+  background: #f8f8f8;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* 'About Us' heading */
+.about-left h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* About Us paragraph */
+.about-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Details button */
+.details-btn {
+  background-color: #007bff; /* Bootstrap style blue */
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Right column: Features list */
+.features-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Each feature item */
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Feature icon placeholder styles */
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #007bff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #007bff;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Feature title */
+.feature-item h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
+}
+
+/* Feature description */
+.feature-item p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-wrapper {
+    flex-direction: column;
+  }
+
+  .about-left,
+  .features-right {
+    width: 100%;
+  }
+}

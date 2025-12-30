@@ -1,32 +1,58 @@
-import React from 'react'
-import { useCart, useDispatchCart } from '../context/CartContext'
-import '../style/Cart.css';
+import React from "react";
+import { useCart, useDispatchCart } from "../context/CartContext";
+import "../style/Cart.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const cart = useCart() || []
-  const dispatch = useDispatchCart()
+  const cart = useCart() || [];
+  const dispatch = useDispatchCart();
+  const navigate = useNavigate();
+  // Normalize price and qty for all items
+  const normalizedCart = cart.map((item) => ({
+    ...item,
+    price: Number(item.price) || 0,
+    qty: Number(item.qty) || 0,
+  }));
 
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0)
+  const total = normalizedCart.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+
+  // const handleCheckout = () => {
+  //   fetch("http://localhost:5000/api/orders", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ cart: normalizedCart, total }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then(() => {
+  //       alert("Order placed successfully!");
+  //       dispatch({ type: "CLEAR" });
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
 
   return (
     <div className="container container-max py-5">
       <h2 className="fw-bold mb-4 text-primary">🛒 Your Cart</h2>
 
-      {cart.length === 0 ? (
+      {normalizedCart.length === 0 ? (
         <div className="alert alert-info">Your cart is empty.</div>
       ) : (
         <div className="cart-wrapper">
-
           {/* ITEMS */}
           <div className="cart-items">
-            {cart.map(item => (
-              <div key={item.id} className="cart-card shadow-sm rounded p-3 mb-3 d-flex align-items-center gap-3">
-
+            {normalizedCart.map((item) => (
+              <div
+                key={item.id}
+                className="cart-card shadow-sm rounded p-3 mb-3 d-flex align-items-center gap-3"
+              >
                 <img
-                  src={item.image}
+                  src={`http://localhost:5000/assets/${item.image}`}
                   alt={item.title}
                   className="rounded"
-                  style={{ width: 90, height: 90, objectFit: 'cover' }}
+                  style={{ width: 90, height: 90, objectFit: "cover" }}
                 />
 
                 <div className="flex-grow-1">
@@ -37,7 +63,7 @@ export default function Cart() {
                 {/* Quantity */}
                 <div className="d-flex align-items-center gap-2">
                   <button
-                    onClick={() => dispatch({ type: 'DECREASE', id: item.id })}
+                    onClick={() => dispatch({ type: "DECREASE", id: item.id })}
                     className="btn btn-light qty-btn"
                   >
                     -
@@ -46,7 +72,7 @@ export default function Cart() {
                   <div className="fw-semibold">{item.qty}</div>
 
                   <button
-                    onClick={() => dispatch({ type: 'ADD', item })}
+                    onClick={() => dispatch({ type: "ADD", item })}
                     className="btn btn-light qty-btn"
                   >
                     +
@@ -58,13 +84,13 @@ export default function Cart() {
                   ${(item.price * item.qty).toFixed(2)}
                 </div>
 
-                <button id='remove'
+                <button
+                  id="remove"
                   className="btn btn-sm btn-outline-danger ms-3"
-                  onClick={() => dispatch({ type: 'REMOVE', id: item.id })}
+                  onClick={() => dispatch({ type: "REMOVE", id: item.id })}
                 >
                   Remove
                 </button>
-
               </div>
             ))}
           </div>
@@ -75,25 +101,28 @@ export default function Cart() {
 
             <div className="d-flex justify-content-between mt-3">
               <span className="fw-medium">Total:</span>
-              <span className="fw-bold fs-4 text-success">${total.toFixed(2)}</span>
+              <span className="fw-bold fs-4 text-success">
+                ${total.toFixed(2)}
+              </span>
             </div>
 
             <div className="d-flex justify-content-end mt-4 gap-2">
               <button
-                onClick={() => dispatch({ type: 'CLEAR' })}
+                onClick={() => dispatch({ type: "CLEAR" })}
                 className="btn btn-outline-secondary"
               >
                 Clear Cart
               </button>
-
-              <button className="btn btn-primary px-4">
+              <button
+                className="btn btn-primary px-4"
+                onClick={() => navigate("/checkout")}
+              >
                 Checkout
               </button>
             </div>
           </div>
-
         </div>
       )}
     </div>
-  )
+  );
 }

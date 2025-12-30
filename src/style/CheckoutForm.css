@@ -1,0 +1,80 @@
+.checkout-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  min-height: 450px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus,
+.checkout-form select:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="white" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>')
+    no-repeat right 12px center;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 36px 12px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkout-form select option {
+  background-color: #fff;
+  color: #000;
+}
+
+.checkout-form button {
+  padding: 14px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-form button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.checkout-form input::placeholder,
+.checkout-form textarea::placeholder {
+  color: #888;
+}
+
+@media (max-width: 550px) {
+  .checkout-form {
+    padding: 20px;
+    margin: 20px;
+  }
+}

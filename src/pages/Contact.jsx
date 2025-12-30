@@ -1,43 +1,53 @@
-import React, { useState } from 'react';
-import '../style/contact.css';
+import React, { useState } from "react";
+import "../style/contact.css";
+import { submitContactForm } from "../components/ContactForm";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Feedback submitted:', formData);
-    alert('Thank you for your feedback!');
-    setFormData({ name: '', email: '', message: '' });
+    console.log("Feedback submitted:", formData);
+    await submitContactForm(formData, setFormData); // actually send data to API
   };
 
   return (
     <div className="contact-container container py-5">
       <h1 className="contact-title mb-4">Contact Us</h1>
+
       <p className="contact-intro">
         We’re here to help! Reach out to us via the following channels:
       </p>
 
       <div className="contact-info mt-4">
-        <p>📍 <strong>Address:</strong> 123 Book Street, Reading City, 45678</p>
-        <p>✉️ <strong>Email:</strong> support@mybookstore.com</p>
-        <p>📞 <strong>Phone:</strong> +1 (234) 567-8901</p>
+        <p>
+          📍 <strong>Address:</strong> 123 Book Street, Reading City, 45678
+        </p>
+        <p>
+          ✉️ <strong>Email:</strong> bookstore.notify@gmail.com
+        </p>
+        <p>
+          📞 <strong>Phone:</strong> +1 (234) 567-8901
+        </p>
       </div>
 
-      {/* Feedback / Suggestion Form */}
       <div className="feedback-form mt-5">
-        <h2 className="h5 fw-semibold mb-3">Send us a suggestion or feedback</h2>
+        <h2 className="h5 fw-semibold mb-3">
+          Send us a suggestion or feedback
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="name" className="form-label">Name</label>
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
             <input
               type="text"
               className="form-control"
@@ -51,7 +61,9 @@ export default function Contact() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
             <input
               type="email"
               className="form-control"
@@ -65,7 +77,9 @@ export default function Contact() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="message" className="form-label">Message</label>
+            <label htmlFor="message" className="form-label">
+              Message
+            </label>
             <textarea
               className="form-control"
               id="message"

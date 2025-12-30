@@ -1,0 +1,4 @@
+[build]
+base = "bookstore"
+command = "npm run build"
+publish = "bookstore/build"
