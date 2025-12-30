@@ -8,12 +8,18 @@ export default function Browse() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatchCart();
 
+  // Use backend URL from env variable or fallback to localhost
+  const BACKEND_URL =
+    process.env.NODE_ENV === "production"
+      ? process.env.REACT_APP_BACKEND_URL
+      : "http://localhost:5000";
+
   useEffect(() => {
-    fetch("http://localhost:5000/api/books")
+    fetch(`${BACKEND_URL}/api/books`)
       .then((res) => res.json())
       .then((data) => setBooks(data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [BACKEND_URL]);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
