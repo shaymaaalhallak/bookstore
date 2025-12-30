@@ -5,7 +5,7 @@ export default function BookCard({ book, onAdd }) {
   return (
     <div className="card h-100">
       <img
-        src={book.image}
+        src={process.env.REACT_APP_FRONTEND_URL + book.image}
         className="card-img-top"
         alt={book.title}
         onError={(e) => {
