@@ -16,7 +16,7 @@ export default function Browse() {
       try {
         const res = await fetch(`${BACKEND_URL}/api/books`);
         const data = await res.json();
-        console.log("BOOKS FROM API:", data); // 🔴 IMPORTANT
+        console.log("BOOKS FROM API:", data);
         setBooks(data);
       } catch (err) {
         console.error("FETCH ERROR:", err);
