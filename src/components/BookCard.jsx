@@ -2,36 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function BookCard({ book, onAdd }) {
+  const imageUrl = book.image?.startsWith("http")
+    ? book.image
+    : `${process.env.REACT_APP_FRONTEND_URL || ""}${book.image}`;
+
   return (
     <div className="card h-100">
-      {/* Book Image */}
       <img
-        src={book.image}
+        src={imageUrl}
         className="card-img-top"
         alt={book.title}
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = "/assets/placeholder.png"; // Optional fallback
+          e.target.src = "/assets/placeholder.webp";
         }}
       />
 
-      {/* Book Details */}
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{book.title}</h5>
         <p className="card-text text-muted small">{book.author}</p>
 
         <div className="mt-auto d-flex align-items-center justify-content-between">
           <div>
-            <div className="fw-semibold">
-              $
-              {!isNaN(Number(book.price))
-                ? Number(book.price).toFixed(2)
-                : "N/A"}
-            </div>
+            <div className="fw-semibold">${Number(book.price).toFixed(2)}</div>
             <div className="small text-muted">⭐ {book.rating}</div>
           </div>
 
-          {/* Buttons */}
           <div className="btn-group">
             <button
               onClick={() => onAdd(book)}
