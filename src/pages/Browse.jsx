@@ -8,26 +8,29 @@ export default function Browse() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatchCart();
 
-  // Use backend URL from env variable or fallback to localhost
   const BACKEND_URL =
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_BACKEND_URL
-      : "http://localhost:5000";
+    process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
   useEffect(() => {
-    fetch(`${BACKEND_URL}/api/books`)
-      .then((res) => res.json())
-      .then((data) => setBooks(data))
-      .catch((err) => console.error(err));
+    const fetchBooks = async () => {
+      try {
+        const res = await fetch(`${BACKEND_URL}/api/books`);
+        const data = await res.json();
+        console.log("BOOKS FROM API:", data); // 🔴 IMPORTANT
+        setBooks(data);
+      } catch (err) {
+        console.error("FETCH ERROR:", err);
+      }
+    };
+
+    fetchBooks();
   }, [BACKEND_URL]);
 
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
     return books.filter(
       (b) =>
-        b.title.toLowerCase().includes(q) ||
-        b.author.toLowerCase().includes(q) ||
-        b.category.toLowerCase().includes(q)
+        b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q)
     );
   }, [query, books]);
 
@@ -36,6 +39,8 @@ export default function Browse() {
       <SearchBar value={query} onChange={setQuery} />
 
       <div className="row g-3 mt-3">
+        {filtered.length === 0 && <p className="text-muted">No books found</p>}
+
         {filtered.map((book) => (
           <div key={book.id} className="col-md-4">
             <BookCard

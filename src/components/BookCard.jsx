@@ -5,13 +5,19 @@ export default function BookCard({ book, onAdd }) {
   return (
     <div className="card h-100">
       <img
-        src={book.image} // <-- use the full URL from backend
+        src={book.image}
         className="card-img-top"
         alt={book.title}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = "/placeholder.png"; // optional fallback
+        }}
       />
+
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{book.title}</h5>
         <p className="card-text text-muted small">{book.author}</p>
+
         <div className="mt-auto d-flex align-items-center justify-content-between">
           <div>
             <div className="fw-semibold">
@@ -22,6 +28,7 @@ export default function BookCard({ book, onAdd }) {
             </div>
             <div className="small text-muted">⭐ {book.rating}</div>
           </div>
+
           <div className="btn-group">
             <button
               onClick={() => onAdd(book)}
