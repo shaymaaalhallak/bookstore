@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 export default function BookCard({ book, onAdd }) {
   return (
     <div className="card h-100">
+      {/* Book Image */}
       <img
-        src={process.env.REACT_APP_FRONTEND_URL + book.image}
+        src={book.image}
         className="card-img-top"
         alt={book.title}
         onError={(e) => {
           e.target.onerror = null;
-          e.target.src = "/placeholder.png"; // optional fallback
+          e.target.src = "/assets/placeholder.png"; // Optional fallback
         }}
       />
 
+      {/* Book Details */}
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{book.title}</h5>
         <p className="card-text text-muted small">{book.author}</p>
@@ -29,6 +31,7 @@ export default function BookCard({ book, onAdd }) {
             <div className="small text-muted">⭐ {book.rating}</div>
           </div>
 
+          {/* Buttons */}
           <div className="btn-group">
             <button
               onClick={() => onAdd(book)}
