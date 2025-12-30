@@ -2,16 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function BookCard({ book, onAdd }) {
-  // Use backend URL from env variable or fallback to localhost
-  const BACKEND_URL =
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_BACKEND_URL
-      : "http://localhost:5000";
-
   return (
     <div className="card h-100">
       <img
-        src={`${BACKEND_URL}/assets/${book.image}`}
+        src={book.image} // <-- use the full URL from backend
         className="card-img-top"
         alt={book.title}
       />
