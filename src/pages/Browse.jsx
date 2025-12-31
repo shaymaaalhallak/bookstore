@@ -9,7 +9,8 @@ export default function Browse() {
   const dispatch = useDispatchCart();
 
   const BACKEND_URL =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
+    process.env.REACT_APP_BACKEND_URL ||
+    "https://backend-production-d637.up.railway.app";
 
   useEffect(() => {
     const fetchBooks = async () => {
